@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Number Guess Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .container {
+      /* border: 1px dashed goldenrod; */
+      width: 50%;
+      margin: 0px auto;
+      background: rgb(255, rgb(54, 100, 54), blue)
+    }
+
+    span {
+      margin-left: 4rem;
+    }
+
+    h3 {
+      display: inline;
+      margin-right: 2rem;
+    }
+.extra {
+  display: flex;
+}
+    .unders {
+      display: flex;
+    }
+  </style>
+</head>
+
+<body>
+
+  <span>
+    <h3>You can change the text color and background-color Here...</h3>
+    <label for="select">Select Theme:
+      <select name="" id="theme">
+        <option value="white">White</option>
+        <option value="black">Black</option>
+        <option value="red">Red</option>
+      </select>
+    </label>
+  </span>
+
+
+  <div class="container">
+    <h1>Number guessing game</h1>
+    <p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you
+      if your guess was too high or too low.</p>
+
+    <label for="guess">Enter a guess:
+      <input type="text" id="guessField">
+    </label>
+    <button type="submit" id="button">Submit Guess</button>
+
+    <div id="paragraphs">
+      <p id="seven"></p>
+      <p id="previousGuess"></p>
+      <p id="guessRemark"></p>
+      <p id="guessStatus"></p>
+    </div>
+  </div>
+  <div class="unders">
+    <ul id="output"></ul>
+    <ul id="output1"></ul>
+    <ul id="output2"></ul>
+    <ul id="product"></ul>
+    <div>
+      <input type="text" id="searchBox">
+      <button id="submitButton">Search</button>
+      <ul id="search"></ul>
+    </div>
+
+    <div>
+      <label for="search">Search by Contact's name:
+        <input type="text" id="searchInput2">
+      </label>
+      <button type="submit" id="searchButton">Search</button>
+      <p id="parargg"></p>
+    </div>
+  </div>
+  <div class="extra">
+      <ul class="output"></ul>
+      <div>
+        <li class="admitted"></li>
+        <li class="refused"></li>
+      </div>
+
+  </div>
+  
+
+
+
+
+
+
+
+  <script>
+    let wholePage = document.querySelector("html");
+    let select = document.querySelector("select");
+    updateSettings = function (bgColor, textColor) {
+      wholePage.style.backgroundColor = bgColor;
+      wholePage.style.color = textColor;
+    }
+    /*  select.addEventListener("change", function() {
+      switch(select.value) {
+case "white":
+updateSettings("white", "black");
+break;
+case "black":
+updateSettings("black", "white");
+break;
+case "red":
+updateSettings("red", "white");
+      }
+    }); */
+    select.onchange = function () {
+      (select.value == "white") ? updateSettings("white", "black"): (select.value == "black") ? updateSettings(
+        "black", "white") : updateSettings("red", "white");
+    }
+    // welcome message
+    // alert("Welcome to this Guess Island. Let's see what your Guess skill looks like");
+    /* let userName = prompt("Please, Enter your name..."); */
+    // variables
+    let randomNumber = Math.floor(Math.random() * 100) + 1;
+    let guessField = document.getElementById("guessField");
+
+    let button = document.getElementById("button");
+    let seven = document.getElementById("seven");
+    let dev = document.querySelector("div");
+    let container = document.getElementById("paragraphs");
+
+    let previousGuess = document.getElementById("previousGuess");
+    let guessRemark = document.getElementById("guessRemark");
+    let guessStatus = document.getElementById("guessStatus");
+
+    let guessCount = 1;
+    let resetButton;
+    guessField.focus()
+
+    // functions
+    let checkGuess = function () {
+
+      let guess = Number(guessField.value);
+      if (guessCount == 1) {
+        previousGuess.textContent = "Previous Guesses: ";
+      }
+      previousGuess.textContent += guess + " ";
+
+      // let seven;
+      if (guessCount == 7) {
+        seven.textContent = `Hey ${userName}. You got just 3 turns to make the right guess.`
+
+      } else if (guessCount == 9) {
+        seven.textContent =
+          `Okay ${userName}!! Look here, it's just 1 more turn. It's the defining moment. Make it count. Take a critical look at your previous guesses and make the right guess this time to win the game.`
+      } else {
+        seven.textContent = " ";
+      }
+
+
+
+      if (guessCount === 10) {
+        guessStatus.textContent = "Ouch! You have exceeded the maximum number of turn. Game Over!";
+        startGameOver();
+      }
+
+      if (guess < randomNumber) {
+        guessStatus.textContent = "Guess is too low";
+        guessRemark.textContent = "Guess is incorrect, try again!";
+        guessRemark.style.backgroundColor = "red";
+      } else if (guess > randomNumber) {
+        guessStatus.textContent = "Guess is too high";
+        guessRemark.textContent = "Guess is incorrect, try again!";
+        guessRemark.style.backgroundColor = "red";
+      } else {
+        guessStatus.textContent = "Congratulations " + userName + "!" + " You rock!";
+        guessRemark.textContent = "Your guess was correct!";
+        guessRemark.style.backgroundColor = "green";
+        startGameOver();
+      }
+
+      guessCount++;
+      guessField.value = " ";
+      guessField.focus();
+    }
+
+    button.addEventListener("click", checkGuess);
+
+    let startGameOver = function () {
+      guessField.disabled = true;
+      button.disabled = true;
+      resetButton = document.createElement("button");
+      resetButton.textContent = "Start a new Game";
+      resetButton.style.marginLeft = "40%";
+      container.appendChild(resetButton);
+
+      resetButton.addEventListener("click", resetGame);
+    }
+
+    let resetGame = function () {
+      guessCount = 1;
+      guessField.disabled = false;
+      button.disabled = false;
+
+      previousGuess.textContent = " ";
+      guessRemark.textContent = " ";
+      guessStatus.textContent = " ";
+
+      resetButton.parentNode.removeChild(resetButton);
+
+      guessField.focus();
+
+      randomNumber = Math.floor(Math.random() * 100) + 1;
+    }
+
+    //In this exercise, we'll start you off simple — we have an array of greeting card messages, but we want to sort them to list just the Christmas messages. We want you to fill in a conditional test inside the if( ... ) structure, to test each string and only print it in the list if it is a Christmas message.
+
+    let list1 = document.getElementById("output1");
+    list1.innerHTML = " ";
+    let greetings = ["Happy Birthday!",
+      "Merry Christmas my love",
+      "A happy Christmas to all the family", "You're all I want for Christmas",
+      "Get well soon"
+    ];
+    for (let i = 0; i < greetings.length; i++) {
+      let input = greetings[i];
+
+      if (input.indexOf("Christmas") != -1) {
+        let listItem = document.createElement("li");
+        listItem.textContent = input;
+        list1.appendChild(listItem);
+      }
+    }
+
+    // In this exercise we have the names of cities in the United Kingdom, but the capitalization is all messed up. We want you to change them so that they are all lower case, except for a capital first letter.
+
+    // var list2 = document.createElement("ul");
+    var list2 = document.getElementById('output2');
+    list2.innerHTML = '';
+    var cities = ['lonDon', 'ManCHESTer', 'BiRmiNGHAM', 'liVERpoOL'];
+
+    for (var i = 0; i < cities.length; i++) {
+      var input = (cities[i].toLowerCase());
+      // write your code just below here
+      var firstLetter = input[0].toUpperCase();
+
+      var result = input.replace(input[0], firstLetter);
+      var listItem = document.createElement('li');
+      listItem.textContent = result;
+
+      list2.appendChild(listItem);
+    }
+
+    //In this last exercise, the array contains a bunch of strings containing information about train stations in the North of England. The strings are data items that contain the three-letter station code, followed by some machine-readable data, followed by a semicolon, followed by the human-readable station name. For example:   MAN675847583748sjt567654;Manchester Piccadilly ===>  MAN: Manchester Piccadilly
+
+
+    var list = document.getElementById('output');
+    // var list = document.createElement("ul");
+    list.innerHTML = '';
+    var stations = ['MAN675847583748sjt567654;Manchester Piccadilly',
+      'GNF576746573fhdg4737dh4;Greenfield',
+      'LIV5hg65hd737456236dch46dg4;Liverpool Lime Street',
+      'SYB4f65hf75f736463;Stalybridge',
+      'HUD5767ghtyfyr4536dh45dg45dg3;Huddersfield'
+    ];
+
+    for (var i = 0; i < stations.length; i++) {
+      var input = stations[i];
+      // write your code just below here   
+      var threeCode = input.slice(0, 3);
+
+      var stationName = input.slice(input.indexOf(";") + 1);
+
+      var result = `${threeCode}: ${stationName}`;
+      var listItem = document.createElement('li');
+      listItem.textContent = result;
+      list.appendChild(listItem);
+    }
+
+
+
+    var list3 = document.getElementById('product');
+    var totalBox = document.createElement('p');
+
+    var total = 0;
+    list3.innerHTML = '';
+    totalBox.textContent = '';
+
+    let products = ['Underpants:6.99', 'Socks:5.99', 'T-shirt:14.99', 'Trousers:31.99', 'Shoes:23.99'];
+
+    for (var i = 0; i < products.length; i++) {
+      var splash = products[i].split(":");
+      var price = Number(splash[1]);
+      total += price;
+      itemText = `${splash[0]} — $${price} `;
+
+      var listItem = document.createElement('li');
+      listItem.textContent = itemText;
+      list3.appendChild(listItem);
+    }
+
+    totalBox.textContent = 'Total: $' + total.toFixed(2);
+    list3.appendChild(totalBox);
+
+
+    var list4 = document.getElementById('search');
+    var searchInput = document.getElementById('searchBox');
+    var searchBtn = document.getElementById('submitButton');
+
+    list4.innerHTML = '';
+
+    var myHistory = [];
+
+    searchBtn.onclick = function () {
+      // we will only allow a term to be entered if the search input isn't empty
+      if (searchInput.value !== '') {
+        // number 1
+        myHistory.unshift(searchInput.value);
+        // empty the list so that we don't display duplicate entries
+        // the display is regenerated every time a search term is entered.
+        list4.innerHTML = '';
+
+        // loop through the array, and display all the search terms in the list
+        for (var i = 0; i < myHistory.length; i++) {
+          itemText = myHistory[i];
+          var listItem = document.createElement('li');
+          listItem.textContent = itemText;
+          list4.appendChild(listItem);
+        }
+
+        // If the array length is 5 or more, remove the oldest search term
+        if (myHistory.length >= 5) {
+          // number 2
+          myHistory.pop()
+        }
+
+        // empty the search input and focus it, ready for the next term to be entered
+        searchInput.value = '';
+        searchInput.focus();
+      }
+    }
+    // contact's number search 
+    let contacts = ['Chris:2232322', 'Sarah:3453456', 'Bill:7654322', 'Mary:9998769', 'Dianne:9384975'];
+    let searchInput2 = document.getElementById("searchInput2");
+    let searchButton = document.getElementById("searchButton");
+    let parargg = document.getElementById("parargg");
+
+    searchButton.onclick = function () {
+      searchInput2.focus();
+      let searchContact = searchInput2.value.toLowerCase();
+
+      for (let i = 0; i < contacts.length; i++) {
+        let splitContact = contacts[i].split(":");
+        if (searchContact == splitContact[0].toLowerCase()) {
+          parargg.textContent = `${splitContact[0]}'s number is ${splitContact[1]}.`;
+          break;
+        } else {
+          parargg.textContent = `Contact not found. Please check the spelling.`
+        }
+      }
+    };
+
+    // blast off
+    let output = document.querySelector('.output');
+    output.innerHTML = '';
+
+    // let i = 10;
+
+
+
+    for (i = 10; i >= 0; i--) {
+      const para = document.createElement('p');
+      para.textContent = "Countdown ";
+      output.appendChild(para);
+      if (i == 10) {
+        para.textContent += i;
+      } else if (i == 0) {
+        para.textContent = "Blast OFF!";
+      } else {
+        para.textContent = i;
+      }
+
+    }
+    // guest list
+    const people = ['Chris', 'Anne', 'Colin', 'Terri', 'Phil', 'Lola', 'Sam', 'Kay', 'Bruce'];
+    
+const admitted = document.querySelector('.admitted');
+const refused = document.querySelector('.refused');
+admitted.textContent = 'Admit: ';
+refused.textContent = 'Refuse: '
+
+// let i = 0;
+for(i = 0; i < people.length; i++) {
+  if(people[i] == "Phil" || people[i] == "Lola") {
+    refused.textContent += people[i] + ", ";
+  } else {
+    admitted.textContent += people[i] + ", ";
+  }
+}
+//not understood.... what's with the slice method.
+refused.textContent = refused.textContent.slice(0,refused.textContent.length-2) + ".";
+admitted.textContent = admitted.textContent.slice(0,admitted.textContent.length-2) + '.';
+
+
+
+  </script>
+</body>
+
+</html>
