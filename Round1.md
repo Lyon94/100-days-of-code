@@ -73,7 +73,7 @@ END DATE --- SATURDAY, 13TH OF JULY, 2019.
 
 Day 9: April 13.
 
-**Review:** It's been over a week since iI started this challenge. I must say it's not been easy(but Hey! nobody said it was gonna be easy, yu know!!). At the start, I struggled with power supply and internet connection issues (I'm still battling with it.) I guess that's a battle that must be fought for all developers in Nigeria. I look forward to solving these problems soon. 
+**Review:** It's been over a week since I started this challenge. I must say it's not been easy(but Hey! nobody said it was gonna be easy, yu know!!). At the start, I struggled with power supply and internet connection issues (I'm still battling with it.) I guess that's a battle that must be fought for all developers in Nigeria. I look forward to solving these problems soon. 
 
 I have consistently taken at least 2 hours daily to do something related to code for the past 9 days. I recorded a low gain on one of the days as I was very tired after getting in from an outing. I read atleast 10 pages of *Atomic Habits* By James Clear daily (sadly, I think I missed one of those days --- tired day that affected code as well.) I tweeted about the things I learnt daily with regards to code (except on the tired day!) and I changed the twitter update for the 100DaysOfX challenge to 3 days per tweet. 
 
@@ -82,3 +82,12 @@ I surpassed the target I had for the FCC challenge. I completed the ES6, regular
 I read a few pages on Js info(I'm supposed to spend an hour going through the site daily on a less busy day.) --- Below target. I started Practical Javascript yesterday, almost midway into the course. 
 
 *NextGoal:* I plan getting it(Practical Js) done with latest by monday. I'll be going through the zero to mastery course's highlighted sections and javascript 1 & 2 on scrimba after going through practical Js. I plan getting them done with by wednesday. By thursday, I want to start Wesbos Js course and roll on with projects. That'll most likely be the case for 30 days from then.
+
+
+Day 19: May 04.
+**Review:** I had to make a travel commitment for sometimes(about 8 days) and was unable to write any meaningful code during the period. I got back to the challenges on Day 13. 
+I've been gaining meaning and novel insights from James Clear's book. I'm pass halfway through. I made tweet comments on twitter about the lessons and actionable points. I started a Work Out challenge that'll span through to the end of May today. 
+
+With regards to code; I felt I've loop holes with regards to my skill set about Javascript. I made a tweet about this on Day 16 of the #100daysofcode challenge. So I decided to take 2 robust Js courses. I started with Jonas Modern Javascript course and it's been cool so far. I built a cool The Pig Game already. 
+
+I'll be going through either @AndreiNeagoie 's or @yu_angela 's course thereafter.
