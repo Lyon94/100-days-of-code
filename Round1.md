@@ -88,6 +88,10 @@ Day 19: May 04.
 **Review:** I had to make a travel commitment for sometimes(about 8 days) and was unable to write any meaningful code during the period. I got back to the challenges on Day 13. 
 I've been gaining meaning and novel insights from James Clear's book. I'm pass halfway through. I made tweet comments on twitter about the lessons and actionable points. I started a Work Out challenge that'll span through to the end of May today. 
 
-With regards to code; I felt I've loop holes with regards to my skill set about Javascript. I made a tweet about this on Day 16 of the #100daysofcode challenge. So I decided to take 2 robust Js courses. I started with Jonas Modern Javascript course and it's been cool so far. I built a cool The Pig Game already. 
+With regards to code; I felt I've loop holes with regards to my skill set about Javascript. I made a tweet about this on Day 16 of the #100daysofcode challenge. So I decided to take 2 robust Js courses. I started with Jonas Modern Javascript course and it's been cool so far. I built a cool The Pig Game already. I made awesome progress with FCC, had to stop at the functional programming section to fill up the loop holes in my skill set.
+Here is a link to all built JS Projects so far: https://lyon94.github.io/100-days-of-code/ 
 
 I'll be going through either @AndreiNeagoie 's or @yu_angela 's course thereafter.
+
+**The nextGoal plan above was changed. I wasn't satisfied with practical Js style and had to change direction.
+***NextGoal: I want to finish up with Jonas's course, then move up to check out Angela Javascript section. I'll round it up with continuing Andrei ZTM course till the end of the Js section, afterwhich I'll be starting Wesbos project.
